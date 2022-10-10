@@ -13,13 +13,8 @@ Also, you should write suitable unit tests to be run in the CI workflow that wil
 */
 
 public class CalculatorApp {
-     
-        public String getMathExpression(){
-		System.out.print("Please enter a mathematical expression (e.g. 12435+34569-12345*10+50): ");
-		Scanner sc = new Scanner(System.in);
-        String mathExp = sc.nextLine();
-		return mathExp;
-        }
+
+	boolean validResult = true;
 		public int calculator(String exp){
 			int n = exp.length();
 			int num1 = 0;
@@ -64,8 +59,8 @@ public class CalculatorApp {
 
 				//error message
 				else{
-					System.out.println("Invalid expression: not able to parse '"+ ch + "'");
-
+					validResult = false;
+					return 0;
 				}
 				
 				//performing the operation
@@ -91,14 +86,6 @@ public class CalculatorApp {
 			}
 			
 		return result;
-		}
-			
-		public static void main (String args[]){
-		CalculatorApp app = new CalculatorApp();
-		String exp = app.getMathExpression();
-
-		int result = app.calculator(exp);
-		System.out.println("Result= "+ result);
 		}
 
 	}
